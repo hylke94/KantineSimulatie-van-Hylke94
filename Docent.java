@@ -18,7 +18,9 @@ public class Docent extends Persoon
     }
     
     public void drukAf() {
+        System.out.println("Docent:");
         System.out.println("Afkorting: "+afkorting);
         System.out.println("Afdeling: "+afdeling);
+        System.out.println();
     }
 }

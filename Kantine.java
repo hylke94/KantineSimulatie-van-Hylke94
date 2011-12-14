@@ -78,25 +78,7 @@ public class Kantine
         }
         kassarij.sluitAchteraan(persoon);
     }
-    /*
-    public Artikel getArtikelByName(String naam) {
-        
-        for (int j=0;j<kantineSimulatie.artikelnamen.length;j++) {
-            artikel[j]=new Artikel(kantineSimulatie.artikelnamen[j], kantineSimulatie.artikelprijzen[j]);
-        }
-        
-        for (int i=0;i<kantineSimulatie.artikelnamen.length;i++) {
-            Artikel artikel2=artikel[i];
-            if (artikel2.artikel.getArtikelName().equals(naam)) {
-                System.out.println(artikel2);
-                return artikel2;
-            }
-        }
-        
-        return null;
-    }
     
-    */
     /**
      * Verwerkt de rij voor de kassa en verwijderd de persoon daarna.
      * Er wordt een while lus gemaakt omdat dit makkelijker is.

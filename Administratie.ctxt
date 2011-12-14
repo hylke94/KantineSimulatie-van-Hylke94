@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=aantal
+comment0.target=double\ berekenGemiddeldeAantal(int[])
+comment0.text=\r\n\ Deze\ methode\ berekent\ van\ de\ int\ array\ aantal\ de\ gemiddelde\ waarde\r\n\ \r\n\ @param\ aantal\r\n\ @retrun\ het\ gemiddelde\r\n
+comment1.params=omzet
+comment1.target=double\ berekenGemiddeldeOmzet(double[])
+comment1.text=\r\n\ Deze\ methode\ berekent\ van\ de\ double\ array\ omzet\ de\ gemiddelde\ waarde\r\n\ \r\n\ @param\ omzet\r\n\ @return\ het\ gemiddelde\r\n
+numComments=2

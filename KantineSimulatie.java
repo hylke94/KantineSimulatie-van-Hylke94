@@ -140,8 +140,8 @@ public class KantineSimulatie
             
             //druk de dagtotalen af en hoeveel personen binnen zijn gekomen
             System.out.println("########################################################################");
-            System.out.println("#De dagtotalen voor dag "+i+" zijn: "+kantine.kassa.hoeveelheidGeldInKassa());
-            System.out.println("#Het aantal personen van dag "+i+" is: "+kantine.hoeveelheidPersonen);
+            System.out.println("#De dagtotalen voor dag "+i+" zijn: "+kantine.kassa.getHoeveelheidGeldInKassa());
+            System.out.println("#Het aantal personen van dag "+i+" is: "+kantine.kassa.getHoeveelheidPersonen());
             System.out.println("########################################################################");
             System.out.println("");
             

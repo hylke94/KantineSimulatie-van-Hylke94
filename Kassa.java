@@ -20,6 +20,7 @@ public class Kassa
     
     private static int aantalArtikelen = 0;
     private static double hoeveelheidGeld = 0;
+    private static int hoeveelheidPersonen = 0;
     
     //-- Constructor
     
@@ -46,8 +47,12 @@ public class Kassa
      * @return int Money earned;
      */
     
-    public double hoeveelheidGeldInKassa(){                        
+    public double getHoeveelheidGeldInKassa(){                        
         return hoeveelheidGeld;
+    }
+    
+    public int getHoeveelheidPersonen() {
+        return hoeveelheidPersonen;
     }
     
     public Iterator getIteratorDienblad() {
@@ -66,7 +71,7 @@ public class Kassa
      */
     
     public void rekenAf(Persoon persoon){
-        kantine.hoeveelheidPersonen += 1;
+        hoeveelheidPersonen += 1;
         Iterator<Artikel> itr=getIteratorDienblad();
         while(itr.hasNext()){
             art=itr.next();
@@ -84,6 +89,7 @@ public class Kassa
     public void resetKassa(){
         aantalArtikelen = 0;
         hoeveelheidGeld = 0;
+        hoeveelheidPersonen = 0;
     }
         
 }

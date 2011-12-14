@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=kassarij
+comment0.target=Kassa(Kassarij)
+comment1.params=
+comment1.target=int\ aantalArtikelen()
+comment1.text=\r\n\ Returns\ the\ amount\ of\ items\r\n\ \r\n\ @return\ int\ items\ sold;\r\n
+comment2.params=
+comment2.target=double\ hoeveelheidGeldInKassa()
+comment2.text=\r\n\ Returns\ the\ total\ amount\ of\ money\ earned\r\n\ \r\n\ @return\ int\ Money\ earned;\r\n
+comment3.params=
+comment3.target=java.util.Iterator\ getIteratorDienblad()
+comment4.params=persoon
+comment4.target=void\ rekenAf(Persoon)
+comment4.text=\r\n\ Makes\ person\ pay\r\n\ \r\n\ @return\ void\r\n
+comment5.params=
+comment5.target=void\ resetKassa()
+comment5.text=\r\n\ Reset\ some\ values\r\n\ \r\n\ @return\ void\r\n
+numComments=6

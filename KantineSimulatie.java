@@ -42,6 +42,9 @@ public class KantineSimulatie
     private static final int MIN_ARTIKELEN_PER_PERSOON=1;
     private static final int MAX_ARTIKELEN_PER_PERSOON=4;
     
+    //Variabelen voor de administratie
+    private double[] omzet;
+    
     //-- Constructor
     
     public KantineSimulatie(int dagen){
@@ -50,6 +53,7 @@ public class KantineSimulatie
         int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
         kantine.setKantineAanbod(kantineaanbod);
+        
         
         simuleer(dagen);
     }
@@ -111,15 +115,21 @@ public class KantineSimulatie
      * @param dagen
      */
     public void simuleer(int dagen){
+        omzet=new double[dagen];
+        
         //for lus voor dagen
-        for(int i=1;i<=dagen;i++){
+        for(int i=0;i<dagen;i++){
             //bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen=75;
+            int aantalKlanten=100;
+            int aantalStudenten=89;
+            int aantalDocenten=10;
+            int aantalMedewerkers=1;
             
             //laat de personen maar komen...
-            for (int j=0;j<aantalpersonen;j++) {
+            for (int j=0;j<aantalStudenten;j++) {
                 ///maak persoon en dienblad aan, koppel ze
-                Persoon persoon=new Persoon();
+                Persoon persoon=new Student(12345,18,03,1994,'M',"Hylke","Vries",296687,"TI");
+                persoon.drukAf();
                 persoon.pakDienblad();
                 
                 //bedenk hoeveel artikelen worden gepakt
@@ -134,19 +144,64 @@ public class KantineSimulatie
                 
                 //loop de kantine binnen, pak de gewenste artikelen, sluit aan
                 kantine.loopPakSluitAan(persoon,artikelen);
-            } 
+            }
+            for (int j=0;j<aantalDocenten;j++) {
+                ///maak persoon en dienblad aan, koppel ze
+                Persoon persoon=new Docent(12345,18,03,1994,'M',"Hylke","Vries","YHDV","TID2");
+                persoon.drukAf();
+                persoon.pakDienblad();
+                
+                //bedenk hoeveel artikelen worden gepakt
+                int aantalartikelen=4;
+                
+                //genereer de "artikelnummers", dit zijn indexen
+                //van de artikelnamen array
+                int[] tepakken=getRandomArray(aantalartikelen,0,aantalartikelen-1);
+                
+                //vind de artikelnamen op basis van de indexen hierboven
+                String[] artikelen=geefArtikelNamen(tepakken);
+                
+                //loop de kantine binnen, pak de gewenste artikelen, sluit aan
+                kantine.loopPakSluitAan(persoon,artikelen);
+            }
+            for (int j=0;j<aantalMedewerkers;j++) {
+                ///maak persoon en dienblad aan, koppel ze
+                Persoon persoon=new KantineMedewerker(12345,18,03,1994,'M',"Hylke","Vries",296687,true);
+                persoon.drukAf();
+                persoon.pakDienblad();
+                
+                //bedenk hoeveel artikelen worden gepakt
+                int aantalartikelen=4;
+                
+                //genereer de "artikelnummers", dit zijn indexen
+                //van de artikelnamen array
+                int[] tepakken=getRandomArray(aantalartikelen,0,aantalartikelen-1);
+                
+                //vind de artikelnamen op basis van de indexen hierboven
+                String[] artikelen=geefArtikelNamen(tepakken);
+                
+                //loop de kantine binnen, pak de gewenste artikelen, sluit aan
+                kantine.loopPakSluitAan(persoon,artikelen);
+            }
             //verwerk rij voor kassa
             kantine.verwerkRij();
             
+            int dag=i+1;
             //druk de dagtotalen af en hoeveel personen binnen zijn gekomen
             System.out.println("########################################################################");
-            System.out.println("#De dagtotalen voor dag "+i+" zijn: "+kantine.kassa.getHoeveelheidGeldInKassa());
-            System.out.println("#Het aantal personen van dag "+i+" is: "+kantine.kassa.getHoeveelheidPersonen());
+            System.out.println("#De dagtotalen voor dag "+dag+" zijn: "+kantine.kassa.getHoeveelheidGeldInKassa());
+            System.out.println("#Het aantal personen van dag "+dag+" is: "+kantine.kassa.getHoeveelheidPersonen());
             System.out.println("########################################################################");
             System.out.println("");
+            
+            //variabelen voor de administratie opslaan
+            omzet[i]=kantine.kassa.getHoeveelheidGeldInKassa();
             
             //reset de kassa voor de volgende dag
             kantine.kassa.resetKassa();
         }
+        //Administratiegegevens afdrukken
+        double gemOmzet=Administratie.berekenGemiddeldeOmzet(omzet);
+        System.out.println("Gemiddelde omzet: "+gemOmzet);
     }
 }

@@ -130,9 +130,12 @@ public class KantineSimulatie
             int aantalMedewerkers=1;
             
             //laat de personen maar komen...
-            for (int j=0;j<aantalStudenten;j++) {
+            for (int j=0;j<aantalKlanten;j++) {
                 ///maak persoon en dienblad aan, koppel ze
                 Persoon persoon=new Student(12345,18,03,1994,'M',"Hylke","Vries",296687,"TI");
+                if (j<aantalStudenten) {persoon=persoon;}
+                else if (j<(aantalStudenten+aantalDocenten)) {persoon=new Docent(12345,18,03,1994,'M',"Hylke","Vries","YHDV","TID2");}
+                else if (j<(aantalStudenten+aantalDocenten+aantalMedewerkers)) {persoon=new KantineMedewerker(12345,18,03,1994,'M',"Hylke","Vries",296687,true);}
                 persoon.drukAf();
                 persoon.pakDienblad();
                 
@@ -149,44 +152,7 @@ public class KantineSimulatie
                 //loop de kantine binnen, pak de gewenste artikelen, sluit aan
                 kantine.loopPakSluitAan(persoon,artikelen);
             }
-            for (int j=0;j<aantalDocenten;j++) {
-                ///maak persoon en dienblad aan, koppel ze
-                Persoon persoon=new Docent(12345,18,03,1994,'M',"Hylke","Vries","YHDV","TID2");
-                persoon.drukAf();
-                persoon.pakDienblad();
-                
-                //bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen=4;
-                
-                //genereer de "artikelnummers", dit zijn indexen
-                //van de artikelnamen array
-                int[] tepakken=getRandomArray(aantalartikelen,0,aantalartikelen-1);
-                
-                //vind de artikelnamen op basis van de indexen hierboven
-                String[] artikelen=geefArtikelNamen(tepakken);
-                
-                //loop de kantine binnen, pak de gewenste artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon,artikelen);
-            }
-            for (int j=0;j<aantalMedewerkers;j++) {
-                ///maak persoon en dienblad aan, koppel ze
-                Persoon persoon=new KantineMedewerker(12345,18,03,1994,'M',"Hylke","Vries",296687,true);
-                persoon.drukAf();
-                persoon.pakDienblad();
-                
-                //bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen=4;
-                
-                //genereer de "artikelnummers", dit zijn indexen
-                //van de artikelnamen array
-                int[] tepakken=getRandomArray(aantalartikelen,0,aantalartikelen-1);
-                
-                //vind de artikelnamen op basis van de indexen hierboven
-                String[] artikelen=geefArtikelNamen(tepakken);
-                
-                //loop de kantine binnen, pak de gewenste artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon,artikelen);
-            }
+            
             //verwerk rij voor kassa
             kantine.verwerkRij();
             

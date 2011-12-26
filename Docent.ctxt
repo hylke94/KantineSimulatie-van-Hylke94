@@ -1,6 +1,8 @@
 #BlueJ class context
-comment0.params=BSN\ dag\ maand\ jaar\ Geslacht\ Voornaam\ Achternaam\ afkorting\ afdelig
+comment0.params=BSN\ dag\ maand\ jaar\ Geslacht\ Voornaam\ Achternaam\ afkorting\ afdeling
 comment0.target=Docent(int,\ int,\ int,\ int,\ char,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.params=
 comment1.target=void\ drukAf()
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

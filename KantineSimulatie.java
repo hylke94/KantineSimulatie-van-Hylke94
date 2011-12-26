@@ -132,11 +132,11 @@ public class KantineSimulatie
             //laat de personen maar komen...
             for (int j=0;j<aantalKlanten;j++) {
                 ///maak persoon en dienblad aan, koppel ze
-                Persoon persoon=new Student(12345,18,03,1994,'M',"Hylke","Vries",296687,"TI");
-                if (j<aantalStudenten) {persoon=persoon;}
-                else if (j<(aantalStudenten+aantalDocenten)) {persoon=new Docent(12345,18,03,1994,'M',"Hylke","Vries","YHDV","TID2");}
-                else if (j<(aantalStudenten+aantalDocenten+aantalMedewerkers)) {persoon=new KantineMedewerker(12345,18,03,1994,'M',"Hylke","Vries",296687,true);}
-                persoon.drukAf();
+                Persoon persoon=new Persoon();
+                if (j<aantalStudenten) {persoon=new Student(12345,18,03,1994,'M',"Hylke","Vries",296687,"TI");}
+                else if (j<(aantalStudenten+aantalDocenten)) {persoon=new Docent(12345,18,03,1994,'M',"Jakob","Vries","JJDV","TID2");}
+                else if (j<(aantalStudenten+aantalDocenten+aantalMedewerkers)) {persoon=new KantineMedewerker(12345,18,03,1994,'M',"Albert","Vries",296687,false);}
+                System.out.println(persoon.toString());
                 persoon.pakDienblad();
                 
                 //bedenk hoeveel artikelen worden gepakt
@@ -152,16 +152,15 @@ public class KantineSimulatie
                 //loop de kantine binnen, pak de gewenste artikelen, sluit aan
                 kantine.loopPakSluitAan(persoon,artikelen);
             }
-            
             //verwerk rij voor kassa
             kantine.verwerkRij();
             
             int dag=i+1;
             //druk de dagtotalen af en hoeveel personen binnen zijn gekomen
-            System.out.println("########################################################################");
+            System.out.println("############################################################");
             System.out.println("#De dagtotalen voor dag "+dag+" zijn: "+kantine.kassa.getHoeveelheidGeldInKassa());
             System.out.println("#Het aantal personen van dag "+dag+" is: "+kantine.kassa.getHoeveelheidPersonen());
-            System.out.println("########################################################################");
+            System.out.println("############################################################");
             System.out.println("");
             
             //variabelen voor de administratie opslaan

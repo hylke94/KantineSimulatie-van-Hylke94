@@ -23,4 +23,13 @@ public class KantineMedewerker extends Persoon
         System.out.println("Achter kassa: "+achterKassa);
         System.out.println();
     }
+    
+    public String toString() {
+        String line1="Kantinemedewerker:\n";
+        String line2=super.toString()+"\n";
+        String line3="Medewerkersnummer: "+medewerkersnummer+"\n";
+        String line4="Mag achter kassa: "+achterKassa+"\n";
+        String string=line1+line2+line3+line4;
+        return string;
+    }
 }

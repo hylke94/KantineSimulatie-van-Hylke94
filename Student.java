@@ -23,4 +23,13 @@ public class Student extends Persoon
         System.out.println("Studierichting: "+studierichting);
         System.out.println();
     }
+    
+    public String toString() {
+        String line1="Student:\n";
+        String line2=super.toString()+"\n";
+        String line3="Studentnummer: "+studentnummer+"\n";
+        String line4="Studierichting: "+studierichting+"\n";
+        String string=line1+line2+line3+line4;
+        return string;
+    }
 }

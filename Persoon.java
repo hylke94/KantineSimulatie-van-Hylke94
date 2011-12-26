@@ -13,20 +13,23 @@ public class Persoon
 {
     private boolean isSchrikkelJaar;
     
-    private int BSN;
+    private int bsn;
     
     private int dag;
     private int maand;
     private int jaar;
     
-    private char Geslacht;
+    private char geslacht;
     
-    private String Voornaam;
-    private String Achternaam;
+    private String voornaam;
+    private String achternaam;
     
     public Dienblad dienblad;
     private Iterator iterator;
     
+    private Betaalwijze betaalwijze;
+    private Contant contant;
+    private Pinpas pinpas;
     
     //------ Constructor
     
@@ -35,16 +38,16 @@ public class Persoon
         this.maand = 0;
         this.jaar = 0;
         
-        this.Geslacht = 'X';
+        this.geslacht = 'X';
     }
    
-    public Persoon(int BSN, int dag, int maand, int jaar, char Geslacht, String Voornaam, String Achternaam){
-        this.BSN = BSN;
+    public Persoon(int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam){
+        this.bsn = bsn;
         
         setBirthdate(dag, maand, jaar);
-        this.Geslacht = Geslacht;
-        this.Voornaam = Voornaam;
-        this.Achternaam =  Achternaam;
+        this.geslacht = geslacht;
+        this.voornaam = voornaam;
+        this.achternaam = achternaam;
     }  
    
     
@@ -56,8 +59,8 @@ public class Persoon
      * @return BSN;
      */
     
-    public int getBSN(){
-        return BSN;
+    public int getBsn(){
+        return bsn;
     }
     
     /**
@@ -88,10 +91,10 @@ public class Persoon
     public String getGender(){
         String gender;
         
-        if(Geslacht == 'M'){
+        if(geslacht == 'M'){
             gender = "Man";
         }
-        else if (Geslacht == 'V'){
+        else if (geslacht == 'V'){
             gender = "Vrouw"; 
         }
         else {
@@ -109,7 +112,7 @@ public class Persoon
      */
     
     public String getFirstname(){
-        return Voornaam;
+        return voornaam;
     }
     
     /**
@@ -119,7 +122,12 @@ public class Persoon
      */
     
     public String getLastname(){
-        return Achternaam;
+        return achternaam;
+    }
+    
+    public String getName(){
+        String naam = voornaam+" "+achternaam;
+        return naam;
     }
     
     
@@ -133,8 +141,8 @@ public class Persoon
      * 
      */
     
-    public void setBSN(int BSN){
-        this.BSN = BSN;
+    public void setBsn(int bsn){
+        this.bsn = bsn;
     }
     
     /**
@@ -246,8 +254,8 @@ public class Persoon
      * @return first name
      */
     
-    public void setVoornaam(String Voornaam){
-        this.Voornaam = Voornaam;
+    public void setVoornaam(String voornaam){
+        this.voornaam = voornaam;
     }
     
     /**
@@ -256,8 +264,8 @@ public class Persoon
      * @return last name
      */
     
-    public void setAchternaam(String Achternaam){
-        this.Achternaam = Achternaam;
+    public void setAchternaam(String achternaam){
+        this.achternaam = achternaam;
     }
     
     /**
@@ -266,12 +274,12 @@ public class Persoon
      * @return gender
      */
     
-    public void setGender(char Geslacht){
-        if (this.Geslacht != 'M' || this.Geslacht != 'V'){
-            this.Geslacht = 'X';    
+    public void setGender(char geslacht){
+        if (this.geslacht != 'M' || this.geslacht != 'V'){
+            this.geslacht = 'X';    
         }
         else { 
-            this.Geslacht = Geslacht;
+            this.geslacht = geslacht;
         }
     }
     
@@ -287,7 +295,7 @@ public class Persoon
     public void drukAf(){
         System.out.println("###################################################");
         System.out.println("## Informatie over:" + getFirstname() +" " + getLastname() + "##");
-        System.out.println("## BSN:" + getBSN() +"##");
+        System.out.println("## BSN:" + getBsn() +"##");
         System.out.println("## Geslacht:" + getGender() +"##");
         System.out.println("## Geboortedatum:" + getGeboorteDatum() +"##");
         System.out.println("###################################################");
@@ -303,8 +311,8 @@ public class Persoon
      * @returns boolean true or false
      */
     
-    public boolean checkSchrikkeljaar(int Jaar){
-        this.jaar =  Jaar;
+    public boolean checkSchrikkeljaar(int jaar){
+        this.jaar =  jaar;
             if(jaar % 4 == 0){
                 if((jaar % 100 == 0) && (jaar % 400 != 0)){
                     isSchrikkelJaar = false;
@@ -339,5 +347,39 @@ public class Persoon
     public Iterator getIteratorDienblad() {
         iterator=dienblad.getIteratorDienblad();
         return iterator;
+    }
+    
+    public String toString() {
+        String naam=voornaam+" "+achternaam;
+        return naam;
+    }
+    
+    public boolean equals(Object object) {
+        if (this==object) return true; //Referentiegelijkheid
+        if (!(object instanceof Persoon)) return false; //Niet hetzelfde type
+        //Toegang krijgen tot de velden van andere personen
+        Persoon other=(Persoon) object;
+        /*return voornaam.equals(other.voornaam) &&
+                achternaam.equals(other.achternaam) &&
+                dienblad.equals(other.dienblad) &&
+                iterator.equals(other.iterator) &&
+                bsn==other.bsn &&
+                dag==other.dag &&
+                maand==other.maand &&
+                jaar==other.jaar &&
+                geslacht==other.geslacht;*/
+        return bsn==other.bsn;
+    }
+    
+    public void setBetaalwijze(double saldo){
+        betaalwijze.setSaldo(saldo);
+    }
+    
+    public Betaalwijze getBetaalwijze(){
+        return betaalwijze;
+    }
+    
+    public Pinpas getPinpas(){
+        return pinpas;
     }
 }

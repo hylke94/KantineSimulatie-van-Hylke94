@@ -25,7 +25,6 @@ public class Kassa
     //-- Constructor
     
     public Kassa(Kassarij kassarij){
-        
         this.kassarij = kassarij;
     }
     
@@ -72,12 +71,40 @@ public class Kassa
     
     public void rekenAf(Persoon persoon){
         hoeveelheidPersonen += 1;
+        double totaalPrijs=0.00;
+        boolean kkh=false; //kkh=kortingskaarthouder
+        double kortingspercentage=0.00;
+        boolean kortingMax=false;
+        double maxKorting=0.00;
+        double korting=0.00;
+        if (persoon instanceof KortingskaartHouder){
+            kkh=true;
+            kortingspercentage=persoon.geefKortingsPercentage();
+            maxKorting=0.00;
+            if (persoon.heeftMaximum()){
+                kortingMax=false;
+                maxKorting=persoon.geefMaximum();
+            }
+            else kortingMax=false;
+        }
         Iterator<Artikel> itr=getIteratorDienblad();
         while(itr.hasNext()){
             art=itr.next();
-            double prijs = art.getArtikelPrice();
-            hoeveelheidGeld += prijs;
+            double prijs=0.00;
+            if (kkh){
+                prijs = art.getArtikelPrice();
+                korting+=(prijs*(1-kortingspercentage));
+            }
+            else prijs = art.getArtikelPrice();
+            totaalPrijs+=prijs;
         }
+        if (kkh){
+            if (kortingMax && korting>maxKorting){
+                    korting=maxKorting;
+            }
+            totaalPrijs-=korting;
+        }
+        else hoeveelheidGeld += totaalPrijs;
     }
     
     /**

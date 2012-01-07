@@ -382,4 +382,11 @@ public class Persoon
     public Pinpas getPinpas(){
         return pinpas;
     }
+    
+    // methode om kortingspercentage op te vragen
+    public double geefKortingsPercentage(){return 0.00;}
+    // methode om op te vragen of er maximum per keer aan de korting zit
+    public boolean heeftMaximum(){return false;}
+    // methode om het maximum kortingsbedrag op te vragen
+    public double geefMaximum(){return 0.00;}
 }

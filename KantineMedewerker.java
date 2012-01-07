@@ -5,7 +5,7 @@
  * @author Hylke de Vries
  * @version 1.0
  */
-public class KantineMedewerker extends Persoon
+public class KantineMedewerker extends Persoon implements KortingskaartHouder
 {
     private int medewerkersnummer;
     private boolean achterKassa;
@@ -31,5 +31,18 @@ public class KantineMedewerker extends Persoon
         String line4="Mag achter kassa: "+achterKassa+"\n";
         String string=line1+line2+line3+line4;
         return string;
+    }
+    
+    // methode om kortingspercentage op te vragen
+    public double geefKortingsPercentage(){
+        return 0.35;
+    }
+    // methode om op te vragen of er maximum per keer aan de korting zit
+    public boolean heeftMaximum(){
+        return false;
+    }
+    // methode om het maximum kortingsbedrag op te vragen
+    public double geefMaximum(){
+        return 0.00;
     }
 }

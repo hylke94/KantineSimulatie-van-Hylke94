@@ -5,7 +5,7 @@
  * @author Hylke de Vries
  * @version 1.0
  */
-public class Docent extends Persoon
+public class Docent extends Persoon implements KortingskaartHouder
 {
     public String afkorting;
     public String afdeling;
@@ -31,5 +31,18 @@ public class Docent extends Persoon
         String line4="Afdeling: "+afdeling+"\n";
         String string=line1+line2+line3+line4;
         return string;
+    }
+    
+    // methode om kortingspercentage op te vragen
+    public double geefKortingsPercentage(){
+        return 0.25;
+    }
+    // methode om op te vragen of er maximum per keer aan de korting zit
+    public boolean heeftMaximum(){
+        return true;
+    }
+    // methode om het maximum kortingsbedrag op te vragen
+    public double geefMaximum(){
+        return 1.00;
     }
 }

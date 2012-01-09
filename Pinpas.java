@@ -14,7 +14,7 @@ public class Pinpas extends Betaalwijze
      * 
      * @param kredietlemiet
      */
-    public void setKredietlmiet (double kredietlemiet){
+    public void setKredietlemiet (double kredietlemiet){
         this.kredietlemiet=kredietlemiet;
     }
     
@@ -22,7 +22,8 @@ public class Pinpas extends Betaalwijze
      * Methode om betaling af te handelen
      */
     public boolean betaal (double teBetalen){
-        if (teBetalen<=saldo){
+        if (teBetalen<=kredietlemiet){
+            kredietlemiet-=teBetalen;
             saldo-=teBetalen;
             return true;
         }

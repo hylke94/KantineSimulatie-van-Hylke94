@@ -379,6 +379,11 @@ public class Persoon
         return betaalwijze;
     }
     
+    public void nieuwePinpas(int kredietlemiet){
+        pinpas = new Pinpas();
+        pinpas.setKredietlemiet(kredietlemiet);
+    }
+    
     public Pinpas getPinpas(){
         return pinpas;
     }

@@ -82,7 +82,7 @@ public class Kassa
             kortingspercentage=persoon.geefKortingsPercentage();
             maxKorting=0.00;
             if (persoon.heeftMaximum()){
-                kortingMax=false;
+                kortingMax=true;
                 maxKorting=persoon.geefMaximum();
             }
             else kortingMax=false;
@@ -104,7 +104,10 @@ public class Kassa
             }
             totaalPrijs-=korting;
         }
-        else hoeveelheidGeld += totaalPrijs;
+        Pinpas pinpas=persoon.getPinpas();
+        if (pinpas.betaal(totaalPrijs)) hoeveelheidGeld += totaalPrijs;
+        else System.out.println("Er staat niet genoeg geld op de pinpas.\nDe betaling is geanuleerd.\n");
+        
     }
     
     /**

@@ -6,18 +6,16 @@
  * @version 1.0
  */
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Persoon
 {
-    private boolean isSchrikkelJaar;
-    
     private int bsn;
     
     private int dag;
     private int maand;
     private int jaar;
+    private boolean isSchrikkelJaar;
     
     private char geslacht;
     
@@ -25,10 +23,9 @@ public class Persoon
     private String achternaam;
     
     public Dienblad dienblad;
-    private Iterator iterator;
+    private Iterator<Artikel> iterator;
     
     private Betaalwijze betaalwijze;
-    private Contant contant;
     private Pinpas pinpas;
     
     //------ Constructor
@@ -344,7 +341,7 @@ public class Persoon
      * 
      * @return iterator
      */
-    public Iterator getIteratorDienblad() {
+    public Iterator<Artikel> getIteratorDienblad() {
         iterator=dienblad.getIteratorDienblad();
         return iterator;
     }
@@ -379,7 +376,7 @@ public class Persoon
         return betaalwijze;
     }
     
-    public void nieuwePinpas(int kredietlemiet){
+    public void nieuwePinpas(double kredietlemiet){
         pinpas = new Pinpas();
         pinpas.setKredietlemiet(kredietlemiet);
     }

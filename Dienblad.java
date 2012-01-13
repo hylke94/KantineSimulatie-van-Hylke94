@@ -22,8 +22,8 @@ public class Dienblad
     
     
     //--- Getters
-    public Iterator getIteratorDienblad() {
-        Iterator itr=artikelen.iterator();
+    public Iterator<Artikel> getIteratorDienblad() {
+        Iterator<Artikel> itr=artikelen.iterator();
         return itr;
     }
     

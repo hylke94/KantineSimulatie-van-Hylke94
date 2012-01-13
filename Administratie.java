@@ -7,9 +7,6 @@
  */
 public class Administratie
 {
-    static final int DAYS_IN_WEEK=7;
-    
-    
     /**
      * Deze methode berekent van de int array aantal de gemiddelde waarde
      * 
@@ -51,6 +48,7 @@ public class Administratie
      */
     public static double[] berekenDagOmzet(double[] omzet)
     {
+        int DAYS_IN_WEEK=7;
         double[] temp=new double[DAYS_IN_WEEK];
         for (int i=0;i<DAYS_IN_WEEK;i++) {
             int j=0;

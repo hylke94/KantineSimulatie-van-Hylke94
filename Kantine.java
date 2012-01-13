@@ -1,4 +1,3 @@
-import java.util.*;
 
 /**
  * Class Kantine
@@ -13,18 +12,7 @@ public class Kantine
     public static Kassa kassa;
     public Kassarij kassarij;
     
-    private Persoon persoon;
     private Persoon persoon1;
-    private Artikel[] artikel;
-    
-    //artikelen
-    private static final String[] artikelnamen=
-        new String[] {"Koffie","Broodje hamburger","Broodje kaas","Melk"};
-    
-    //prijzen
-    private static double[] artikelprijzen=
-        new double[] {1.50,2.10,1.65,1.65};
-    
     
     public static double hoeveelheidGeld =0;
     
@@ -32,14 +20,12 @@ public class Kantine
     
     private KantineAanbod kantineaanbod;
     
-    private KantineSimulatie kantineSimulatie;
-    
     //-- Constructor
     
     public Kantine(){
         kassarij = new Kassarij();
         kassa = new Kassa(kassarij);
-        kantineaanbod=kantineSimulatie.kantineaanbod;
+        kantineaanbod=KantineSimulatie.kantineaanbod;
     }
     
     //-- Getters
@@ -72,7 +58,7 @@ public class Kantine
     public void loopPakSluitAan(Persoon persoon, String[] namen){
        if (namen.length>0) {
            for (int i=0;i<namen.length;i++) {
-               Artikel art=kantineSimulatie.kantineaanbod.getArtikel(namen[i]);
+               Artikel art=KantineSimulatie.kantineaanbod.getArtikel(namen[i]);
                persoon.dienblad.voegToe(art);
             }
         }

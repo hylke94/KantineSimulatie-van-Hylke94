@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -12,11 +11,8 @@ public class Kassa
     //-- Variabelen
     private Kassarij kassarij;
     private Persoon persoon;
-    private Dienblad dienblad;
-    private Artikel artikel;
     private Artikel art;
-    private Iterator iterator;
-    private Kantine kantine;
+    private Iterator<Artikel> iterator;
     
     private static int aantalArtikelen = 0;
     private static double hoeveelheidGeld = 0;
@@ -54,7 +50,7 @@ public class Kassa
         return hoeveelheidPersonen;
     }
     
-    public Iterator getIteratorDienblad() {
+    public Iterator<Artikel> getIteratorDienblad() {
         persoon=kassarij.eerstePersoonInRij(persoon);
         iterator=persoon.getIteratorDienblad();
         return iterator;

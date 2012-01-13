@@ -10,7 +10,7 @@ public class PersoonsVergelijker
      * Constructor
      */
     public PersoonsVergelijker(){
-        
+        main();
     }
     
     public static void main(/*String[] args*/){

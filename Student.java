@@ -17,6 +17,9 @@ public class Student extends Persoon
         this.studierichting=studierichting;
     }
     
+    /**
+     * Methode om alle gegevens van de student af te drukken
+     */
     public void drukAf() {
         System.out.println("Student:");
         System.out.println("Studentnummer: "+studentnummer);
@@ -24,6 +27,11 @@ public class Student extends Persoon
         System.out.println();
     }
     
+    /**
+     * Geeft een string met alle gegevens van de student
+     * 
+     * @return String
+     */
     public String toString() {
         String line1="Student:\n";
         String line2=super.toString()+"\n";

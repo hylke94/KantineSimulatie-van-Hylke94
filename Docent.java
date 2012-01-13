@@ -10,13 +10,29 @@ public class Docent extends Persoon implements KortingskaartHouder
     public String afkorting;
     public String afdeling;
     
-    public Docent (int BSN, int dag, int maand, int jaar, char Geslacht, String Voornaam, String Achternaam, String afkorting, String afdeling)
+    /**
+     * Constructor that makes a teacher
+     * 
+     * @param BSN
+     * @param dag
+     * @param maand
+     * @param jaar
+     * @param geslacht
+     * @param voornaam
+     * @param achternaam
+     * @param afkorting
+     * @param afdeling
+     */
+    public Docent (int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam, String afkorting, String afdeling)
     {
-        super(BSN, dag, maand, jaar, Geslacht, Voornaam, Achternaam);
+        super(bsn, dag, maand, jaar, geslacht, voornaam, achternaam);
         this.afkorting=afkorting;
         this.afdeling=afdeling;
     }
     
+    /**
+     * Method to print all the teacher-information.
+     */
     public void drukAf() {
         System.out.println("Docent:");
         System.out.println("Afkorting: "+afkorting);
@@ -24,6 +40,11 @@ public class Docent extends Persoon implements KortingskaartHouder
         System.out.println();
     }
     
+    /**
+     * Method to make a String of all the teacher-information.
+     * 
+     * @return string
+     */
     public String toString() {
         String line1="Docent:\n";
         String line2=super.toString()+"\n";
@@ -33,15 +54,29 @@ public class Docent extends Persoon implements KortingskaartHouder
         return string;
     }
     
-    // methode om kortingspercentage op te vragen
+    /**
+     * Gives the discount rate.
+     * 
+     * @return double discount rate
+     */
     public double geefKortingsPercentage(){
         return 0.25;
     }
-    // methode om op te vragen of er maximum per keer aan de korting zit
+
+    /**
+     * Returns a boolean. True if the teacher has a maximum of discount rate.
+     * 
+     * @return boolean
+     */
     public boolean heeftMaximum(){
         return true;
     }
-    // methode om het maximum kortingsbedrag op te vragen
+
+    /**
+     * Returns the maximum of discount rate
+     * 
+     * @return double maximum discount rate
+     */
     public double geefMaximum(){
         return 1.00;
     }

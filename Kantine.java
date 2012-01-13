@@ -22,6 +22,9 @@ public class Kantine
     
     //-- Constructor
     
+    /**
+     * Constructor that makes a checkout with a cash row.
+     */
     public Kantine(){
         kassarij = new Kassarij();
         kassa = new Kassa(kassarij);
@@ -30,6 +33,11 @@ public class Kantine
     
     //-- Getters
     
+    /**
+     * Return the KantineAanbod
+     * 
+     * @return kantineaanbod
+     */
     public KantineAanbod getKantineAanbod(){
         return kantineaanbod;
     }
@@ -50,11 +58,10 @@ public class Kantine
      * de artikelen in artikelnamen
      * 
      * @param persoon
-     * @artikelnamen
+     * @param artikelnamen
      * 
      * Hierna sluit het persoon zich aan in de rij voor de kassa.
      */
-    
     public void loopPakSluitAan(Persoon persoon, String[] namen){
        if (namen.length>0) {
            for (int i=0;i<namen.length;i++) {
@@ -69,7 +76,6 @@ public class Kantine
      * Verwerkt de rij voor de kassa en verwijderd de persoon daarna.
      * Er wordt een while lus gemaakt omdat dit makkelijker is.
      */
-    
     public void verwerkRij(){
         while(kassarij.isErEenRij()==true){
             persoon1 = kassarij.eerstePersoonInRij(persoon1);
@@ -81,7 +87,6 @@ public class Kantine
     /**
      * Reset de kassa
      */
-    
     public void resetKassa(){
         hoeveelheidPersonen = 0;
         hoeveelheidGeld = 0;

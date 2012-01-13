@@ -13,6 +13,9 @@ public class PersoonsVergelijker
         main();
     }
     
+    /**
+     * Methode vergelijkt twee personen
+     */
     public static void main(/*String[] args*/){
         Persoon persoon1 = new Persoon(12345, 18, 03, 1994, 'M', "Hylke", "Vries");
         Persoon persoon2 = new Persoon(12345, 18, 03, 1994, 'M', "Hylke", "Vries");

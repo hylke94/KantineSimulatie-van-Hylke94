@@ -60,8 +60,8 @@ public class Kassarij
     }
     
     /**
-       * Verwijderd een persoon uit de rij
-         */
+    * Verwijderd een persoon uit de rij
+    */
     
     public void verwijderPersoonUitRij(){
         persoon.remove(0);

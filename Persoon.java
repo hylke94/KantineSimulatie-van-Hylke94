@@ -122,6 +122,11 @@ public class Persoon
         return achternaam;
     }
     
+    /**
+     * Get the full name
+     * 
+     * @return voornaam + achternaam
+     */
     public String getName(){
         String naam = voornaam+" "+achternaam;
         return naam;
@@ -339,48 +344,71 @@ public class Persoon
     /**
      * Haal het dienblad met artikelen als een Iterator op
      * 
-     * @return iterator
+     * @return Iterator<Artikel> dienblad
      */
     public Iterator<Artikel> getIteratorDienblad() {
         iterator=dienblad.getIteratorDienblad();
         return iterator;
     }
     
+    /**
+     * Geeft een string van de gegevens (in dit geval alleen de naam)
+     * 
+     * @return String
+     */
     public String toString() {
         String naam=voornaam+" "+achternaam;
         return naam;
     }
     
+    /**
+     * Controleert of twee personen dezelfde personen zijn
+     * 
+     * @param Object
+     * 
+     * @return boolean
+     */
     public boolean equals(Object object) {
         if (this==object) return true; //Referentiegelijkheid
         if (!(object instanceof Persoon)) return false; //Niet hetzelfde type
         //Toegang krijgen tot de velden van andere personen
         Persoon other=(Persoon) object;
-        /*return voornaam.equals(other.voornaam) &&
-                achternaam.equals(other.achternaam) &&
-                dienblad.equals(other.dienblad) &&
-                iterator.equals(other.iterator) &&
-                bsn==other.bsn &&
-                dag==other.dag &&
-                maand==other.maand &&
-                jaar==other.jaar &&
-                geslacht==other.geslacht;*/
         return bsn==other.bsn;
     }
     
+    /**
+     * Setter voor de betaalwijze
+     * 
+     * @param saldo
+     */
     public void setBetaalwijze(double saldo){
         betaalwijze.setSaldo(saldo);
     }
     
+    /**
+     * Getter voor de betaalwijze
+     * 
+     * @return betaalwijze
+     */
     public Betaalwijze getBetaalwijze(){
         return betaalwijze;
     }
     
+    /**
+     * Maakt een nieuwe pinpas voor de persoon
+     * 
+     * @param kredietlemiet
+     */
     public void nieuwePinpas(double kredietlemiet){
         pinpas = new Pinpas();
         pinpas.setKredietlemiet(kredietlemiet);
     }
     
+    /**
+     * Geeft de pinpas
+     * 
+     * @return Pinpas
+     */
     public Pinpas getPinpas(){
         return pinpas;
     }

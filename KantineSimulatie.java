@@ -103,7 +103,7 @@ public class KantineSimulatie
     //-- Voids
     
     /**
-     * Deze methode simuleert en aatal dagen in het verloop van de kantine
+     * Deze methode simuleert en aantal dagen in het verloop van de kantine
      * 
      * @param dagen
      */
@@ -169,7 +169,9 @@ public class KantineSimulatie
             //reset de kassa voor de volgende dag
             Kantine.kassa.resetKassa();
         }
+        
         //Administratiegegevens afdrukken
+        
         double gemAantal=Administratie.berekenGemiddeldeAantal(aantal);
         System.out.println("Gemiddelde aantal personen per dag: "+gemAantal);
         System.out.println();

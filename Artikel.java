@@ -13,7 +13,7 @@ public class Artikel
     
     
     /**
-     * Initliase a constructor for the Article name and the Article price.
+     * Constructor
      */
     
     public Artikel(){
@@ -60,6 +60,10 @@ public class Artikel
     
     //--- Druk af
     
+    /**
+     * Print all information about the article
+     * @param art
+     */
     public void drukAf(Artikel art){
         System.out.println("######################");
         System.out.println("## Artikelnaam: " + getArtikelName() + "##");

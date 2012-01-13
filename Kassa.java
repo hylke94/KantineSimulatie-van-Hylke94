@@ -46,10 +46,20 @@ public class Kassa
         return hoeveelheidGeld;
     }
     
+    /**
+     * Geeft het aantal gepasseerde personen.
+     * 
+     * @return int hoeveelheidpersonen
+     */
     public int getHoeveelheidPersonen() {
         return hoeveelheidPersonen;
     }
     
+    /**
+     * Geeft een iterator van het dienblad
+     * 
+     * @return Itrator<Artikel> dienblad
+     */
     public Iterator<Artikel> getIteratorDienblad() {
         persoon=kassarij.eerstePersoonInRij(persoon);
         iterator=persoon.getIteratorDienblad();

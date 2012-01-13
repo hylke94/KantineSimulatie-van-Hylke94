@@ -10,13 +10,16 @@ public class KantineMedewerker extends Persoon implements KortingskaartHouder
     private int medewerkersnummer;
     private boolean achterKassa;
     
-    public KantineMedewerker (int BSN, int dag, int maand, int jaar, char Geslacht, String Voornaam, String Achternaam, int medewerkersnummer, boolean achterKassa)
+    public KantineMedewerker (int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam, int medewerkersnummer, boolean achterKassa)
     {
-        super(BSN, dag, maand, jaar, Geslacht, Voornaam, Achternaam);
+        super(bsn, dag, maand, jaar, geslacht, voornaam, achternaam);
         this.medewerkersnummer=medewerkersnummer;
         this.achterKassa=achterKassa;
     }
     
+    /**
+     * Methode om alle gegevens van de kantinewederwerk(st)er af te druken.
+     */
     public void drukAf() {
         System.out.println("Kantinemedewerker:");
         System.out.println("Medewerkersnummer: "+medewerkersnummer);
@@ -24,6 +27,11 @@ public class KantineMedewerker extends Persoon implements KortingskaartHouder
         System.out.println();
     }
     
+    /**
+     * Methode om een String te maken van alle informatie van de kantinemederwerk(st)er
+     * 
+     * @return String
+     */
     public String toString() {
         String line1="Kantinemedewerker:\n";
         String line2=super.toString()+"\n";
@@ -33,15 +41,29 @@ public class KantineMedewerker extends Persoon implements KortingskaartHouder
         return string;
     }
     
-    // methode om kortingspercentage op te vragen
+    /**
+     * Gives the discount rate.
+     * 
+     * @return double discount rate
+     */
     public double geefKortingsPercentage(){
         return 0.35;
     }
-    // methode om op te vragen of er maximum per keer aan de korting zit
+    
+    /**
+     * Returns a boolean. True if the teacher has a maximum of discount rate.
+     * 
+     * @return boolean
+     */
     public boolean heeftMaximum(){
         return false;
     }
-    // methode om het maximum kortingsbedrag op te vragen
+    
+    /**
+     * Returns the maximum of discount rate
+     * 
+     * @return double maximum discount rate
+     */
     public double geefMaximum(){
         return 0.00;
     }

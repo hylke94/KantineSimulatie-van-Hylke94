@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Artikel here.
+ * Dit is een artikel-class, waar een artikel zijn naam en ijs in opslaat.
  * 
  * @author Hylke de Vries
  * @version 1.0
@@ -20,9 +20,9 @@ public class Artikel
         
     }
     
-    public Artikel(String artikelNaam, double artikelPrijs){
-        this.artikelNaam =  artikelNaam;
-        this.artikelPrijs = artikelPrijs;
+    public Artikel(String artikelNaam1, double artikelPrijs1){
+        this.artikelNaam =  artikelNaam1;
+        this.artikelPrijs = artikelPrijs1;
         
     }
     
@@ -31,7 +31,7 @@ public class Artikel
      */
     
     public String getArtikelName(){
-        return artikelNaam;
+        return this.artikelNaam;
     }
     
     /**
@@ -39,32 +39,31 @@ public class Artikel
      */
     
     public double getArtikelPrice(){
-        return artikelPrijs;
+        return this.artikelPrijs;
     }
     
     /**
      * Set the Article name
      */
     
-    public void setArticleName(String artikelNaam){
-        this.artikelNaam =  artikelNaam;
+    public void setArticleName(String artikelNaam1){
+        this.artikelNaam =  artikelNaam1;
     }
     
     /**
      * Set a new Article price
      */
     
-    public void setArticlePrice(int artikelPrijs){
-        this.artikelPrijs =  artikelPrijs;
+    public void setArticlePrice(int artikelPrijs1){
+        this.artikelPrijs =  artikelPrijs1;
     }
     
     //--- Druk af
     
     /**
      * Print all information about the article
-     * @param art
      */
-    public void drukAf(Artikel art){
+    public void drukAf(){
         System.out.println("######################");
         System.out.println("## Artikelnaam: " + getArtikelName() + "##");
         System.out.println("## Artikelprijs: " + getArtikelPrice() + "##");

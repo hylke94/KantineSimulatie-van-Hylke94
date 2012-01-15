@@ -20,8 +20,8 @@ public class Kassa
     
     //-- Constructor
     
-    public Kassa(Kassarij kassarij){
-        this.kassarij = kassarij;
+    public Kassa(Kassarij kasrij){
+        this.kassarij = kasrij;
     }
     
     //-- Getters 
@@ -32,7 +32,7 @@ public class Kassa
      * @return int items sold;
      */
     
-    public int aantalArtikelen(){               
+    public static int aantalArtikelen(){               
         return aantalArtikelen;
     }
     
@@ -42,7 +42,7 @@ public class Kassa
      * @return int Money earned;
      */
     
-    public double getHoeveelheidGeldInKassa(){                        
+    public static double getHoeveelheidGeldInKassa(){                        
         return hoeveelheidGeld;
     }
     
@@ -51,7 +51,7 @@ public class Kassa
      * 
      * @return int hoeveelheidpersonen
      */
-    public int getHoeveelheidPersonen() {
+    public static int getHoeveelheidPersonen() {
         return hoeveelheidPersonen;
     }
     
@@ -61,9 +61,11 @@ public class Kassa
      * @return Itrator<Artikel> dienblad
      */
     public Iterator<Artikel> getIteratorDienblad() {
-        persoon=kassarij.eerstePersoonInRij(persoon);
-        iterator=persoon.getIteratorDienblad();
-        return iterator;
+    	//pak de eerste persoon uit de rij
+        this.persoon=this.kassarij.eerstePersoonInRij();
+        //maak een Iterator van zijn/haar dienblad
+        this.iterator=this.persoon.getIteratorDienblad();
+        return this.iterator;
     }
     
     //-- Setters
@@ -75,7 +77,7 @@ public class Kassa
      * @return void
      */
     
-    public void rekenAf(Persoon persoon){
+    public void rekenAf(Persoon pers){
         hoeveelheidPersonen += 1;
         double totaalPrijs=0.00;
         boolean kkh=false; //kkh=kortingskaarthouder
@@ -83,34 +85,46 @@ public class Kassa
         boolean kortingMax=false;
         double maxKorting=0.00;
         double korting=0.00;
-        if (persoon instanceof KortingskaartHouder){
+        //als de persoon een kortingskaarthouder is, controleer zijn 'kortingsstatus'
+        if (pers instanceof KortingskaartHouder){
             kkh=true;
-            kortingspercentage=persoon.geefKortingsPercentage();
+            //haal percentage op
+            kortingspercentage=pers.geefKortingsPercentage();
             maxKorting=0.00;
-            if (persoon.heeftMaximum()){
+            //als hij/zij een maximumkortingspercentage heeft, haal deze dan op
+            if (pers.heeftMaximum()){
                 kortingMax=true;
-                maxKorting=persoon.geefMaximum();
+                maxKorting=pers.geefMaximum();
             }
             else kortingMax=false;
         }
+        //haal de Iterator van het dienblad op
         Iterator<Artikel> itr=getIteratorDienblad();
+        //zolang er nog artikelen aanwezig zijn, ga door met afrekenen
         while(itr.hasNext()){
-            art=itr.next();
-            double prijs=0.00;
+        	//pak eerstvolgende artikel
+            this.art=itr.next();
+            double prijs = this.art.getArtikelPrice();
+            //als de persoon een kortingskaarthouder is, bereken de korting en sla op in een aparte variabele
             if (kkh){
-                prijs = art.getArtikelPrice();
                 korting+=(prijs*(1-kortingspercentage));
             }
-            else prijs = art.getArtikelPrice();
+            //tel de prijs bij de totaalprijs op
             totaalPrijs+=prijs;
         }
+        //haal de korting van de totaalprijs af
         if (kkh){
+        	//controle op maximumkorting(overschrijding)
             if (kortingMax && korting>maxKorting){
-                    korting=maxKorting;
+            	//als de korting hoger is dan het maximum, veranderd de korting in het maximumbedrag
+                korting=maxKorting;
             }
             totaalPrijs-=korting;
         }
-        Pinpas pinpas=persoon.getPinpas();
+        //haal de pinpas van de persoon op
+        Pinpas pinpas=pers.getPinpas();
+        //als de betaling geslaagd is, tel de totaalprijs bij het 'kassageld' op.
+        //geef anders een error.
         if (pinpas.betaal(totaalPrijs)) hoeveelheidGeld += totaalPrijs;
         else System.out.println("Er staat niet genoeg geld op de pinpas.\nDe betaling is geanuleerd.\n");
         
@@ -122,7 +136,7 @@ public class Kassa
      * @return void
      */
     
-    public void resetKassa(){
+    public static void resetKassa(){
         aantalArtikelen = 0;
         hoeveelheidGeld = 0;
         hoeveelheidPersonen = 0;

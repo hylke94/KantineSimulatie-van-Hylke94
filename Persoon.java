@@ -38,13 +38,12 @@ public class Persoon
         this.geslacht = 'X';
     }
    
-    public Persoon(int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam){
-        this.bsn = bsn;
-        
-        setBirthdate(dag, maand, jaar);
-        this.geslacht = geslacht;
-        this.voornaam = voornaam;
-        this.achternaam = achternaam;
+    public Persoon(int bsn1, int dag1, int maand1, int jaar1, char geslacht1, String voornaam1, String achternaam1){
+        setBsn(bsn1);
+        setBirthdate(dag1, maand1, jaar1);
+        setGender(geslacht1);
+        setVoornaam(voornaam1);
+        setAchternaam(achternaam1);
     }  
    
     
@@ -57,7 +56,7 @@ public class Persoon
      */
     
     public int getBsn(){
-        return bsn;
+        return this.bsn;
     }
     
     /**
@@ -68,12 +67,12 @@ public class Persoon
     
     public String getGeboorteDatum(){
         String temp;
-        
-        if(dag == 0 && maand == 0 & jaar == 0){
+        //als er geen datum bekend is, return "onbekend"
+        if(this.dag == 0 && this.maand == 0 & this.jaar == 0){
             temp = "Onbekend";
         }
         else {
-            temp = dag+"/"+maand+"/"+jaar;
+            temp = this.dag+"/"+this.maand+"/"+this.jaar;
         }
         
         return temp;
@@ -88,10 +87,10 @@ public class Persoon
     public String getGender(){
         String gender;
         
-        if(geslacht == 'M'){
+        if(this.geslacht == 'M'){
             gender = "Man";
         }
-        else if (geslacht == 'V'){
+        else if (this.geslacht == 'V'){
             gender = "Vrouw"; 
         }
         else {
@@ -109,7 +108,7 @@ public class Persoon
      */
     
     public String getFirstname(){
-        return voornaam;
+        return this.voornaam;
     }
     
     /**
@@ -119,7 +118,7 @@ public class Persoon
      */
     
     public String getLastname(){
-        return achternaam;
+        return this.achternaam;
     }
     
     /**
@@ -128,7 +127,7 @@ public class Persoon
      * @return voornaam + achternaam
      */
     public String getName(){
-        String naam = voornaam+" "+achternaam;
+        String naam = this.voornaam+" "+this.achternaam;
         return naam;
     }
     
@@ -143,8 +142,8 @@ public class Persoon
      * 
      */
     
-    public void setBsn(int bsn){
-        this.bsn = bsn;
+    public void setBsn(int bsn1){
+        this.bsn = bsn1;
     }
     
     /**
@@ -153,102 +152,33 @@ public class Persoon
      * @return Birthday
      */
     
-    public void setBirthdate(int dag, int maand, int jaar){
-            
-        if(jaar >= 1900 && jaar <= 2100){
-            
-            if(jaar % 4 == 0){
-                if((jaar % 100 == 0) && (jaar % 400 != 0)){
-                    isSchrikkelJaar = false;
-                }
-                else {
-                    isSchrikkelJaar = true;
-                }
-            }
-            else {
-                isSchrikkelJaar = false;
-            }
-            
-        this.jaar = jaar;
-                       
-            if(maand >= 1 && maand <= 12 && dag >= 1){
-                
-                
-                if(maand <= 7 && maand % 2 == 1){
-                    this.maand =  maand;
-                    
-                    if(dag <= 31){
-                        this.dag = dag;
-                    }
-                    else { 
-                       this.dag = 0;
-                    }
-                }
-                else if (maand == 2) {
-                    this.maand = maand;
-                    
-                    if(isSchrikkelJaar == true){
-                        if (dag <= 29){
-                            this.dag = dag;
-                        }
-                        else {
-                            this.dag = 0;
-                        }
-                    }
-                    else {
-                        if (dag <= 28){
-                            this.dag = dag;
-                        }
-                        else { 
-                            this.dag = 0;
-                        }
-                    }
-                }
-                else if(maand <= 6 && maand %2 == 0){
-                    this.maand = maand;
-                    
-                    if(dag <= 30){
-                        this.dag = dag;
-                    }
-                    else { 
-                        this.dag = 0;
-                    }
-                }
-                else if(maand >= 8 && maand % 2 == 0){
-                    this.maand = maand;
-                    
-                    if(dag <= 31){
-                        this.dag = dag;
-                    }
-                    else { 
-                        this.dag = 0;
-                    }
-                }
-                else if (maand >= 8 && maand % 2 == 1){
-                    this.maand = maand;
-                    
-                    if(dag <= 30){
-                        this.dag = dag;
-                    }
-                    else { 
-                       this.dag = 0;
-                    }
-                }
-                else {
-                    System.out.println("### DEBUG: " + dag + " " + maand + " " + jaar);
-                }
-            }
-            else {
-                System.out.println("### FOUT: Dit jaar slaat nergens op!");
-            }
-        }
-        else {
-            System.out.println("### FOUT: De jaren moeten liggen tussen 1900 of 2100");
-        }
-                
+    public void setBirthdate(int dag1, int maand1, int jaar1){
+    	if (jaar1>=1900 && jaar1<=2100){
+    		if (maand1>=0 && maand1<=12){
+    			this.maand=maand1;
+    			if (dag1>=1 && dag1<=31){
+    				if (maand1==2){
+    					if (checkSchrikkeljaar(jaar1)==true && dag1<=29) this.dag=dag1;
+    					else if (dag1<=28) this.dag=dag1;
+    				}
+    				else if	(	(maand1<=6 && maand1%2==0 && dag1<=30)		||
+    							(maand1<=7 && maand1%2==1 && dag1<=31)		||
+    							(maand1>=8 && maand1%2==0 && dag1<=31)		||
+    							(maand1>=9 && maand1%2==1 && dag1<=30))	this.dag=dag1;
+    				else{
+    					this.dag=0;
+    					System.out.println("Deze dag bestaat niet!");
+    				}
+    			}
+    			else{
+    				this.dag=0;
+    				System.out.println("Deze dag bestaat niet!");
+    			}
+    		}
+    		else System.out.println("Deze maand bestaat niet!");
+    	}
+    	else System.out.println("De jaren moeten tussen de 1900 en 2100 liggen!");
     }
-    
-    
     
     /**
      * Set the first name
@@ -256,8 +186,8 @@ public class Persoon
      * @return first name
      */
     
-    public void setVoornaam(String voornaam){
-        this.voornaam = voornaam;
+    public void setVoornaam(String voornaam1){
+        this.voornaam = voornaam1;
     }
     
     /**
@@ -266,8 +196,8 @@ public class Persoon
      * @return last name
      */
     
-    public void setAchternaam(String achternaam){
-        this.achternaam = achternaam;
+    public void setAchternaam(String achternaam1){
+        this.achternaam = achternaam1;
     }
     
     /**
@@ -276,12 +206,12 @@ public class Persoon
      * @return gender
      */
     
-    public void setGender(char geslacht){
+    public void setGender(char geslacht1){
         if (this.geslacht != 'M' || this.geslacht != 'V'){
             this.geslacht = 'X';    
         }
         else { 
-            this.geslacht = geslacht;
+            this.geslacht = geslacht1;
         }
     }
     
@@ -313,21 +243,21 @@ public class Persoon
      * @returns boolean true or false
      */
     
-    public boolean checkSchrikkeljaar(int jaar){
-        this.jaar =  jaar;
-            if(jaar % 4 == 0){
-                if((jaar % 100 == 0) && (jaar % 400 != 0)){
-                    isSchrikkelJaar = false;
+    public boolean checkSchrikkeljaar(int jaar1){
+        this.jaar =  jaar1;
+            if(jaar1 % 4 == 0){
+                if((jaar1 % 100 == 0) && (jaar1 % 400 != 0)){
+                    this.isSchrikkelJaar = false;
                 }
                 else {
-                    isSchrikkelJaar = true;
+                    this.isSchrikkelJaar = true;
                 }
             }
             else {
-                isSchrikkelJaar = false;
+                this.isSchrikkelJaar = false;
         }
         
-        return isSchrikkelJaar;
+        return this.isSchrikkelJaar;
         
     }
     
@@ -338,7 +268,7 @@ public class Persoon
      */
     
     public void pakDienblad(){
-        dienblad = new Dienblad();
+        this.dienblad = new Dienblad();
     }
     
     /**
@@ -347,8 +277,8 @@ public class Persoon
      * @return Iterator<Artikel> dienblad
      */
     public Iterator<Artikel> getIteratorDienblad() {
-        iterator=dienblad.getIteratorDienblad();
-        return iterator;
+        this.iterator=this.dienblad.getIteratorDienblad();
+        return this.iterator;
     }
     
     /**
@@ -356,8 +286,9 @@ public class Persoon
      * 
      * @return String
      */
-    public String toString() {
-        String naam=voornaam+" "+achternaam;
+    @Override
+	public String toString() {
+        String naam=this.voornaam+" "+this.achternaam;
         return naam;
     }
     
@@ -368,12 +299,13 @@ public class Persoon
      * 
      * @return boolean
      */
-    public boolean equals(Object object) {
+    @Override
+	public boolean equals(Object object) {
         if (this==object) return true; //Referentiegelijkheid
         if (!(object instanceof Persoon)) return false; //Niet hetzelfde type
         //Toegang krijgen tot de velden van andere personen
         Persoon other=(Persoon) object;
-        return bsn==other.bsn;
+        return this.bsn==other.bsn;
     }
     
     /**
@@ -382,7 +314,7 @@ public class Persoon
      * @param saldo
      */
     public void setBetaalwijze(double saldo){
-        betaalwijze.setSaldo(saldo);
+        this.betaalwijze.setSaldo(saldo);
     }
     
     /**
@@ -391,7 +323,7 @@ public class Persoon
      * @return betaalwijze
      */
     public Betaalwijze getBetaalwijze(){
-        return betaalwijze;
+        return this.betaalwijze;
     }
     
     /**
@@ -400,8 +332,8 @@ public class Persoon
      * @param kredietlemiet
      */
     public void nieuwePinpas(double kredietlemiet){
-        pinpas = new Pinpas();
-        pinpas.setKredietlemiet(kredietlemiet);
+        this.pinpas = new Pinpas();
+        this.pinpas.setKredietlemiet(kredietlemiet);
     }
     
     /**
@@ -410,13 +342,16 @@ public class Persoon
      * @return Pinpas
      */
     public Pinpas getPinpas(){
-        return pinpas;
+        return this.pinpas;
     }
     
     // methode om kortingspercentage op te vragen
-    public double geefKortingsPercentage(){return 0.00;}
+    @SuppressWarnings("static-method")
+	public double geefKortingsPercentage(){return 0.00;}
     // methode om op te vragen of er maximum per keer aan de korting zit
-    public boolean heeftMaximum(){return false;}
+    @SuppressWarnings("static-method")
+	public boolean heeftMaximum(){return false;}
     // methode om het maximum kortingsbedrag op te vragen
-    public double geefMaximum(){return 0.00;}
+    @SuppressWarnings("static-method")
+	public double geefMaximum(){return 0.00;}
 }

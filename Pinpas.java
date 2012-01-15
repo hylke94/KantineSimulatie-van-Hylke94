@@ -14,17 +14,18 @@ public class Pinpas extends Betaalwijze
      * 
      * @param kredietlemiet
      */
-    public void setKredietlemiet (double kredietlemiet){
-        this.kredietlemiet=kredietlemiet;
+    public void setKredietlemiet (double kredlem){
+        this.kredietlemiet=kredlem;
     }
     
     /**
      * Methode om betaling af te handelen
      */
-    public boolean betaal (double teBetalen){
-        if (teBetalen<=kredietlemiet){
-            kredietlemiet-=teBetalen;
-            saldo-=teBetalen;
+    @Override
+	public boolean betaal (double teBetalen){
+        if (teBetalen<=this.kredietlemiet){
+            this.kredietlemiet-=teBetalen;
+            this.saldo-=teBetalen;
             return true;
         }
         return false;

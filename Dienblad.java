@@ -1,5 +1,6 @@
+
 /**
- * Klasse Dienblad
+ * De klasse Dienblad houdt een ArrayList bij, met de gekozen artikelen.
  * 
  * @author Hylke de Vries
  * @version 1.0
@@ -20,7 +21,7 @@ public class Dienblad
      * Constructor that maken an empty ArrayList for the tray
      */
     public Dienblad(){
-        artikelen = new ArrayList<Artikel>();
+        this.artikelen = new ArrayList<Artikel>();
     }
     
     
@@ -32,7 +33,7 @@ public class Dienblad
      * @return Iterator<Artikel>
      */
     public Iterator<Artikel> getIteratorDienblad() {
-        Iterator<Artikel> itr=artikelen.iterator();
+        Iterator<Artikel> itr=this.artikelen.iterator();
         return itr;
     }
     
@@ -48,7 +49,7 @@ public class Dienblad
      */
     
     public void voegToe(Artikel artikel){
-        artikelen.add(artikel);
+        this.artikelen.add(artikel);
     }
     
     

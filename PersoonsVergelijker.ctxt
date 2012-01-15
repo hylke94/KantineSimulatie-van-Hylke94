@@ -4,4 +4,5 @@ comment0.target=PersoonsVergelijker()
 comment0.text=\r\n\ Constructor\r\n
 comment1.params=
 comment1.target=void\ main()
+comment1.text=\r\n\ Methode\ vergelijkt\ twee\ personen\r\n
 numComments=2

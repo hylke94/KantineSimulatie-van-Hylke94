@@ -1,6 +1,7 @@
 
 /**
- * Write a description of class Docent here.
+ * Docent is een subklasse van Persoon en bevat de
+ * eigenschappen/variabelen die alleen een docent heeft.
  * 
  * @author Hylke de Vries
  * @version 1.0
@@ -20,23 +21,24 @@ public class Docent extends Persoon implements KortingskaartHouder
      * @param geslacht
      * @param voornaam
      * @param achternaam
-     * @param afkorting
-     * @param afdeling
+     * @param afk
+     * @param afd
      */
-    public Docent (int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam, String afkorting, String afdeling)
+    public Docent (int bsn, int dag, int maand, int jaar, char geslacht, String voornaam, String achternaam, String afk, String afd)
     {
         super(bsn, dag, maand, jaar, geslacht, voornaam, achternaam);
-        this.afkorting=afkorting;
-        this.afdeling=afdeling;
+        this.afkorting=afk;
+        this.afdeling=afd;
     }
     
     /**
      * Method to print all the teacher-information.
      */
-    public void drukAf() {
+    @Override
+	public void drukAf() {
         System.out.println("Docent:");
-        System.out.println("Afkorting: "+afkorting);
-        System.out.println("Afdeling: "+afdeling);
+        System.out.println("Afkorting: "+this.afkorting);
+        System.out.println("Afdeling: "+this.afdeling);
         System.out.println();
     }
     
@@ -45,11 +47,12 @@ public class Docent extends Persoon implements KortingskaartHouder
      * 
      * @return string
      */
-    public String toString() {
+    @Override
+	public String toString() {
         String line1="Docent:\n";
         String line2=super.toString()+"\n";
-        String line3="Afkorting: "+afkorting+"\n";
-        String line4="Afdeling: "+afdeling+"\n";
+        String line3="Afkorting: "+this.afkorting+"\n";
+        String line4="Afdeling: "+this.afdeling+"\n";
         String string=line1+line2+line3+line4;
         return string;
     }
@@ -59,7 +62,8 @@ public class Docent extends Persoon implements KortingskaartHouder
      * 
      * @return double discount rate
      */
-    public double geefKortingsPercentage(){
+    @Override
+	public double geefKortingsPercentage(){
         return 0.25;
     }
 
@@ -68,7 +72,8 @@ public class Docent extends Persoon implements KortingskaartHouder
      * 
      * @return boolean
      */
-    public boolean heeftMaximum(){
+    @Override
+	public boolean heeftMaximum(){
         return true;
     }
 
@@ -77,7 +82,8 @@ public class Docent extends Persoon implements KortingskaartHouder
      * 
      * @return double maximum discount rate
      */
-    public double geefMaximum(){
+    @Override
+	public double geefMaximum(){
         return 1.00;
     }
 }

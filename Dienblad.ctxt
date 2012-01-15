@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Dienblad()
+comment0.text=\r\n\ Constructor\ that\ maken\ an\ empty\ ArrayList\ for\ the\ tray\r\n
 comment1.params=
 comment1.target=java.util.Iterator\ getIteratorDienblad()
+comment1.text=\r\n\ Make\ an\ iterator\ from\ the\ tray\r\n\ \r\n\ @return\ Iterator<Artikel>\r\n
 comment2.params=artikel
 comment2.target=void\ voegToe(Artikel)
-comment2.text=\r\n\ Adds\ the\ item\ to\ an\ ArrayList\r\n\ \r\n\ @return\ void\r\n
+comment2.text=\r\n\ Adds\ the\ item\ to\ an\ ArrayList\r\n\ \r\n\ @param\ artikel\r\n
 numComments=3

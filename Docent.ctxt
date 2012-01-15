@@ -1,14 +1,20 @@
 #BlueJ class context
-comment0.params=BSN\ dag\ maand\ jaar\ Geslacht\ Voornaam\ Achternaam\ afkorting\ afdeling
+comment0.params=bsn\ dag\ maand\ jaar\ geslacht\ voornaam\ achternaam\ afkorting\ afdeling
 comment0.target=Docent(int,\ int,\ int,\ int,\ char,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Constructor\ that\ makes\ a\ teacher\r\n\ \r\n\ @param\ BSN\r\n\ @param\ dag\r\n\ @param\ maand\r\n\ @param\ jaar\r\n\ @param\ geslacht\r\n\ @param\ voornaam\r\n\ @param\ achternaam\r\n\ @param\ afkorting\r\n\ @param\ afdeling\r\n
 comment1.params=
 comment1.target=void\ drukAf()
+comment1.text=\r\n\ Method\ to\ print\ all\ the\ teacher-information.\r\n
 comment2.params=
 comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ Method\ to\ make\ a\ String\ of\ all\ the\ teacher-information.\r\n\ \r\n\ @return\ string\r\n
 comment3.params=
 comment3.target=double\ geefKortingsPercentage()
+comment3.text=\r\n\ Gives\ the\ discount\ rate.\r\n\ \r\n\ @return\ double\ discount\ rate\r\n
 comment4.params=
 comment4.target=boolean\ heeftMaximum()
+comment4.text=\r\n\ Returns\ a\ boolean.\ True\ if\ the\ teacher\ has\ a\ maximum\ of\ discount\ rate.\r\n\ \r\n\ @return\ boolean\r\n
 comment5.params=
 comment5.target=double\ geefMaximum()
+comment5.text=\r\n\ Returns\ the\ maximum\ of\ discount\ rate\r\n\ \r\n\ @return\ double\ maximum\ discount\ rate\r\n
 numComments=6

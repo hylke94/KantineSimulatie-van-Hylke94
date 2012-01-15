@@ -42,11 +42,10 @@ public class KantineSimulatie
     //-- Constructor
     
     public KantineSimulatie(int dagen){
-        kantine=new Kantine();
-        random=new Random();
+        this.kantine=new Kantine();
+        this.random=new Random();
         int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
-        kantine.setKantineAanbod(kantineaanbod);
         
         simuleer(dagen);
     }
@@ -79,7 +78,7 @@ public class KantineSimulatie
      * @retrun Een random getal
      */
     private int getRandomValue(int min, int max) {
-        return random.nextInt(max-min+1)+min;
+        return this.random.nextInt(max-min+1)+min;
     }
     
     /**
@@ -90,7 +89,7 @@ public class KantineSimulatie
      * 
      * @return De array met artikelnamen
      */
-    private String[] geefArtikelNamen(int[] indexen) {
+    private static String[] geefArtikelNamen(int[] indexen) {
         String[] artikelen=new String[indexen.length];
         for (int i=0;i<indexen.length;i++) {
             artikelen[i]=artikelnamen[indexen[i]];
@@ -108,9 +107,9 @@ public class KantineSimulatie
      * @param dagen
      */
     public void simuleer(int dagen){
-        aantal=new int[dagen];
-        omzet=new double[dagen];
-        dagomzet=new double[dagen];
+        this.aantal=new int[dagen];
+        this.omzet=new double[dagen];
+        this.dagomzet=new double[dagen];
         
         //for lus voor dagen
         for(int i=0;i<dagen;i++){
@@ -148,43 +147,43 @@ public class KantineSimulatie
                 String[] artikelen=geefArtikelNamen(tepakken);
                 
                 //loop de kantine binnen, pak de gewenste artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon,artikelen);
+                this.kantine.loopPakSluitAan(persoon,artikelen);
             }
             //verwerk rij voor kassa
-            kantine.verwerkRij();
+            this.kantine.verwerkRij();
             
             int dag=i+1;
             //druk de dagtotalen af en hoeveel personen binnen zijn gekomen
             System.out.println("############################################################");
-            System.out.println("#De dagtotalen voor dag "+dag+" zijn: "+Kantine.kassa.getHoeveelheidGeldInKassa());
-            System.out.println("#Het aantal personen van dag "+dag+" is: "+Kantine.kassa.getHoeveelheidPersonen());
+            System.out.println("#De dagtotalen voor dag "+dag+" zijn: "+Kassa.getHoeveelheidGeldInKassa());
+            System.out.println("#Het aantal personen van dag "+dag+" is: "+Kassa.getHoeveelheidPersonen());
             System.out.println("############################################################");
             System.out.println("");
             
             //variabelen voor de administratie opslaan
-            aantal[i]=Kantine.kassa.getHoeveelheidPersonen();
-            omzet[i]=Kantine.kassa.getHoeveelheidGeldInKassa();
-            dagomzet[i]=Kantine.kassa.getHoeveelheidGeldInKassa();
+            this.aantal[i]=Kassa.getHoeveelheidPersonen();
+            this.omzet[i]=Kassa.getHoeveelheidGeldInKassa();
+            this.dagomzet[i]=Kassa.getHoeveelheidGeldInKassa();
             
             //reset de kassa voor de volgende dag
-            Kantine.kassa.resetKassa();
+            Kassa.resetKassa();
         }
         
         //Administratiegegevens afdrukken
         
-        double gemAantal=Administratie.berekenGemiddeldeAantal(aantal);
+        double gemAantal=Administratie.berekenGemiddeldeAantal(this.aantal);
         System.out.println("Gemiddelde aantal personen per dag: "+gemAantal);
         System.out.println();
         
-        double gemOmzet=Administratie.berekenGemiddeldeOmzet(omzet);
+        double gemOmzet=Administratie.berekenGemiddeldeOmzet(this.omzet);
         System.out.println("Gemiddelde omzet per dag: "+gemOmzet);
         System.out.println();
         
-        double[] gemDagOmzet=Administratie.berekenDagOmzet(dagomzet);
+        double[] gemDagOmzet=Administratie.berekenDagOmzet(this.dagomzet);
         System.out.println("Totale omzet van alle zondagen = "+gemDagOmzet[0]);
         System.out.println("Totale omzet van alle maandagen = "+gemDagOmzet[1]);
         System.out.println("Totale omzet van alle dinsdagen = "+gemDagOmzet[2]);
-        System.out.println("Totale omzet van alle woensdage = "+gemDagOmzet[3]);
+        System.out.println("Totale omzet van alle woensdagen = "+gemDagOmzet[3]);
         System.out.println("Totale omzet van alle donderdagen = "+gemDagOmzet[4]);
         System.out.println("Totale omzet van alle vrijdagen = "+gemDagOmzet[5]);
         System.out.println("Totale omzet van alle zaterdagen = "+gemDagOmzet[6]);

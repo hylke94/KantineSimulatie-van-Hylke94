@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Kantine()
+comment0.text=\r\n\ Constructor\ die\ een\ kassa\ met\ een\ kassarij\ maakt.\r\n
 comment1.params=
 comment1.target=KantineAanbod\ getKantineAanbod()
+comment1.text=\r\n\ Return\ the\ KantineAanbod\r\n\ \r\n\ @return\ kantineaanbod\r\n
 comment2.params=kantineaanbod
 comment2.target=void\ setKantineAanbod(KantineAanbod)
 comment2.text=\r\n\ Set\ KantineAanbod\r\n
 comment3.params=persoon\ namen
 comment3.target=void\ loopPakSluitAan(Persoon,\ java.lang.String[])
-comment3.text=\r\n\ In\ deze\ methode\ kiest\ een\ Persoon\ met\ een\ dienblad\r\n\ de\ artikelen\ in\ artikelnamen\r\n\ \r\n\ @param\ persoon\r\n\ @artikelnamen\r\n\ \r\n\ Hierna\ sluit\ het\ persoon\ zich\ aan\ in\ de\ rij\ voor\ de\ kassa.\r\n
+comment3.text=\r\n\ In\ deze\ methode\ kiest\ een\ Persoon\ met\ een\ dienblad\r\n\ de\ artikelen\ in\ artikelnamen\r\n\ \r\n\ @param\ persoon\r\n\ @param\ artikelnamen\r\n\ \r\n\ Hierna\ sluit\ het\ persoon\ zich\ aan\ in\ de\ rij\ voor\ de\ kassa.\r\n
 comment4.params=
 comment4.target=void\ verwerkRij()
 comment4.text=\r\n\ Verwerkt\ de\ rij\ voor\ de\ kassa\ en\ verwijderd\ de\ persoon\ daarna.\r\n\ Er\ wordt\ een\ while\ lus\ gemaakt\ omdat\ dit\ makkelijker\ is.\r\n

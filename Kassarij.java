@@ -14,7 +14,7 @@ public class Kassarij
     //--- Constructor
     
     public Kassarij(){
-        persoon = new ArrayList<Persoon>();
+        this.persoon = new ArrayList<Persoon>();
     }
     
     //--- Getters
@@ -26,7 +26,7 @@ public class Kassarij
     */
     
     public boolean isErEenRij(){
-        return (persoon.size() >= 1);
+        return (this.persoon.size() >= 1);
     }
     
     /**
@@ -35,14 +35,13 @@ public class Kassarij
     * @return Person
     */
     
-    public Persoon eerstePersoonInRij(Persoon persoon){
+    public Persoon eerstePersoonInRij(){
         
         if(isErEenRij()){
             return this.persoon.get(0);
         }
-        else { // Geen rij
-            return null;
-        }
+        // Geen rij
+        return null;
     }
     
     //--- Setters
@@ -55,8 +54,8 @@ public class Kassarij
     * @return void
     */
     
-    public void sluitAchteraan(Persoon persoon){
-        this.persoon.add(persoon);
+    public void sluitAchteraan(Persoon pers){
+        this.persoon.add(pers);
     }
     
     /**
@@ -64,7 +63,7 @@ public class Kassarij
     */
     
     public void verwijderPersoonUitRij(){
-        persoon.remove(0);
+        this.persoon.remove(0);
     }
     
 }

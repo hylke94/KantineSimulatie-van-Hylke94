@@ -331,9 +331,10 @@ public class Persoon
      * 
      * @param kredietlemiet
      */
-    public void nieuwePinpas(double kredietlemiet){
+    public void nieuwePinpas(double saldo, double kredietlimiet){
         this.pinpas = new Pinpas();
-        this.pinpas.setKredietlemiet(kredietlemiet);
+        this.pinpas.setSaldo(saldo);
+        this.pinpas.setKredietlemiet(kredietlimiet);
     }
     
     /**

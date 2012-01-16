@@ -132,7 +132,7 @@ public class KantineSimulatie
                 else if (j<(aantalStudenten+aantalDocenten+aantalMedewerkers)) {
                 	persoon=new KantineMedewerker(12345,18,03,1994,'M',"Albert","Vries",296687,false);
                 }
-                persoon.nieuwePinpas(7.50);
+                persoon.nieuwePinpas(7.50,0.00);
                 System.out.println(persoon.toString());
                 persoon.pakDienblad();
                 

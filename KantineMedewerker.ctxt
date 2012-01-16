@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.params=bsn\ dag\ maand\ jaar\ geslacht\ voornaam\ achternaam\ medewerkersnummer\ achterKassa
+comment0.params=bsn\ dag\ maand\ jaar\ geslacht\ voornaam\ achternaam\ mdwnr\ achtKas
 comment0.target=KantineMedewerker(int,\ int,\ int,\ int,\ char,\ java.lang.String,\ java.lang.String,\ int,\ boolean)
 comment1.params=
 comment1.target=void\ drukAf()

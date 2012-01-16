@@ -124,10 +124,15 @@ public class Kassa
         //haal de pinpas van de persoon op
         Pinpas pinpas=pers.getPinpas();
         //als de betaling geslaagd is, tel de totaalprijs bij het 'kassageld' op.
-        //geef anders een error.
-        if (pinpas.betaal(totaalPrijs)) hoeveelheidGeld += totaalPrijs;
-        else System.out.println("Er staat niet genoeg geld op de pinpas.\nDe betaling is geanuleerd.\n");
-        
+        //Bij te weinig saldo, wordt er een TeWeinigGeldException gegooid.
+        try{
+        	pinpas.betaal(totaalPrijs);
+        	hoeveelheidGeld += totaalPrijs;
+        }
+        catch(Exception e){
+        	System.out.println(e);
+        	System.out.println();
+        }
     }
     
     /**

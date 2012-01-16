@@ -10,13 +10,16 @@ public class Contant extends Betaalwijze
 {
     /**
      * Methode om betaling af te handelen
+     * 
+     * @throws TeWeinigGeldException als er niet genoeg krediet is
      */
     @Override
-	public boolean betaal(double teBetalen){
+	public void betaal(double teBetalen) throws TeWeinigGeldException{
         if (teBetalen<=this.saldo){
             this.saldo-=teBetalen;
-            return true;
         }
-        return false;
+        else{
+        	throw new TeWeinigGeldException("Onvoldoende saldo!");
+        }
     }
 }

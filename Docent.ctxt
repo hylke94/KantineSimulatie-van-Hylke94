@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.params=bsn\ dag\ maand\ jaar\ geslacht\ voornaam\ achternaam\ afkorting\ afdeling
+comment0.params=bsn\ dag\ maand\ jaar\ geslacht\ voornaam\ achternaam\ afk\ afd
 comment0.target=Docent(int,\ int,\ int,\ int,\ char,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment0.text=\r\n\ Constructor\ that\ makes\ a\ teacher\r\n\ \r\n\ @param\ BSN\r\n\ @param\ dag\r\n\ @param\ maand\r\n\ @param\ jaar\r\n\ @param\ geslacht\r\n\ @param\ voornaam\r\n\ @param\ achternaam\r\n\ @param\ afkorting\r\n\ @param\ afdeling\r\n
+comment0.text=\r\n\ Constructor\ that\ makes\ a\ teacher\r\n\ \r\n\ @param\ BSN\r\n\ @param\ dag\r\n\ @param\ maand\r\n\ @param\ jaar\r\n\ @param\ geslacht\r\n\ @param\ voornaam\r\n\ @param\ achternaam\r\n\ @param\ afk\r\n\ @param\ afd\r\n
 comment1.params=
 comment1.target=void\ drukAf()
 comment1.text=\r\n\ Method\ to\ print\ all\ the\ teacher-information.\r\n

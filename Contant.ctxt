@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.params=teBetalen
 comment0.target=boolean\ betaal(double)
-comment0.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n
+comment0.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n\ \r\n\ @throws\ TeWeinigGeldException\ als\ er\ niet\ genoeg\ krediet\ is\r\n
 numComments=1

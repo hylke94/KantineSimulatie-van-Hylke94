@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.params=kassarij
+comment0.params=kasrij
 comment0.target=Kassa(Kassarij)
 comment1.params=
 comment1.target=int\ aantalArtikelen()
@@ -13,7 +13,7 @@ comment3.text=\r\n\ Geeft\ het\ aantal\ gepasseerde\ personen.\r\n\ \r\n\ @retur
 comment4.params=
 comment4.target=java.util.Iterator\ getIteratorDienblad()
 comment4.text=\r\n\ Geeft\ een\ iterator\ van\ het\ dienblad\r\n\ \r\n\ @return\ Itrator<Artikel>\ dienblad\r\n
-comment5.params=persoon
+comment5.params=pers
 comment5.target=void\ rekenAf(Persoon)
 comment5.text=\r\n\ Makes\ person\ pay\r\n\ \r\n\ @return\ void\r\n
 comment6.params=

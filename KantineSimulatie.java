@@ -30,15 +30,13 @@ public class KantineSimulatie
     public static double[] artikelprijzen=
         new double[] {1.50,2.10,1.65,1.65};
     
-    //hoeveelheden
-	int[] hoeveelheden = new int[] {20000,20000,20000,20000};
-    
 	//minimum en maximum aantal artikelen per soort
-    private static final int MIN_ARTIKELEN_PER_SOORT=10000;
-    private static final int MAX_ARTIKELEN_PER_SOORT=20000;
+    private static int MIN_ARTIKELEN_PER_SOORT=10000;
+    private static int MAX_ARTIKELEN_PER_SOORT=20000;
     
     //Variabelen voor de administratie
     private int[] aantal;
+    private double aantal2;
     private double[] omzet;
     private double[] dagomzet;
     
@@ -48,7 +46,7 @@ public class KantineSimulatie
     	this.kantine=new Kantine();
         this.random=new Random();
         
-        //int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
+        int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
     }
     
@@ -108,8 +106,11 @@ public class KantineSimulatie
      * 
      * @param dagen
      */
-    public void simuleer(int dagen){
+    public void simuleer(int dagen, int mins, int maxs, int minp, int maxp){
+    	MIN_ARTIKELEN_PER_SOORT=mins;
+    	MAX_ARTIKELEN_PER_SOORT=maxs;
         this.aantal=new int[dagen];
+        this.aantal2=0;
         this.omzet=new double[dagen];
         this.dagomzet=new double[dagen];
         
@@ -139,11 +140,12 @@ public class KantineSimulatie
                 persoon.pakDienblad();
                 
                 //bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen=4;
+                int aantalartikelen=getRandomValue(minp,maxp);
+                this.aantal2+=aantalartikelen;
                 
                 //genereer de "artikelnummers", dit zijn indexen
                 //van de artikelnamen array
-                int[] tepakken=getRandomArray(aantalartikelen,0,aantalartikelen-1);
+                int[] tepakken=getRandomArray(aantalartikelen,0,AANTAL_ARTIKELEN-1);
                 
                 //vind de artikelnamen op basis van de indexen hierboven
                 String[] artikelen=geefArtikelNamen(tepakken);
@@ -175,6 +177,11 @@ public class KantineSimulatie
         
         double gemAantal=Administratie.berekenGemiddeldeAantal(this.aantal);
         System.out.println("Gemiddelde aantal personen per dag: "+gemAantal);
+        System.out.println();
+        
+        double gemAantal2=(this.aantal2/(dagen*100));
+        System.out.println("Totaal aantal artikelen: "+this.aantal2);
+        System.out.println("Gemiddelde aantal artikelen per persoon: "+gemAantal2);
         System.out.println();
         
         double gemOmzet=Administratie.berekenGemiddeldeOmzet(this.omzet);

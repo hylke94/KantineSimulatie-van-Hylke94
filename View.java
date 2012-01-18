@@ -26,6 +26,10 @@ public class View extends JFrame implements ActionListener{
 	private JTextField inputfield3 = new JTextField(5);
 	private JTextField inputfield4 = new JTextField(5);
 	private JTextField aantalDagen = new JTextField(3);
+	private JTextField minArtikelenPerSoort = new JTextField(5);
+	private JTextField maxArtikelenPerSoort = new JTextField(5);
+	private JTextField minArtikelenPerPersoon = new JTextField(5);
+	private JTextField maxArtikelenPerPersoon = new JTextField(5);
 	
 	//buttons
 	private JButton button1 = new JButton("Toevoegen");
@@ -59,9 +63,18 @@ public class View extends JFrame implements ActionListener{
 		content.add(new JLabel(""));
 		content.add(new JLabel(""));
 		content.add(new JLabel(""));
+		content.add(new JLabel("Min/Max artikelen per soort:"));
+		content.add(this.minArtikelenPerSoort);
+		content.add(this.maxArtikelenPerSoort);
+		content.add(new JLabel("Min/Max artikelen per persoon:"));
+		content.add(this.minArtikelenPerPersoon);
+		content.add(this.maxArtikelenPerPersoon);
 		content.add(new JLabel("Aantal dagen:"));
 		content.add(this.aantalDagen);
+		content.add(new JLabel(""));
+		content.add(new JLabel(""));
 		content.add(this.button2);
+		content.add(new JLabel(""));
 		
 		this.button1.addActionListener(this);
 		this.button2.addActionListener(this);
@@ -133,10 +146,20 @@ public class View extends JFrame implements ActionListener{
 			}
 		}
 		else if (command.equals("Start")) {
-			if (this.aantalDagen.getSelectionEnd()!=0){
-				String input = this.aantalDagen.getText();
-				int dagen = Integer.parseInt(input);
-				Tester.ks.simuleer(dagen);
+			if (this.aantalDagen.getSelectionEnd()!=0 && 
+					this.minArtikelenPerSoort.getSelectionEnd()!=0 && 
+					this.maxArtikelenPerSoort.getSelectionEnd()!=0){
+				String inputDagen = this.aantalDagen.getText();
+				int dagen = Integer.parseInt(inputDagen);
+				String inputMins = this.minArtikelenPerSoort.getText();
+				int mins = Integer.parseInt(inputMins);
+				String inputMaxs = this.maxArtikelenPerSoort.getText();
+				int maxs = Integer.parseInt(inputMaxs);
+				String inputMinp = this.minArtikelenPerPersoon.getText();
+				int minp = Integer.parseInt(inputMinp);
+				String inputMaxp = this.maxArtikelenPerPersoon.getText();
+				int maxp = Integer.parseInt(inputMaxp);
+				Tester.ks.simuleer(dagen,mins,maxs,minp,maxp);
 			}
 			else{
 				System.out.println("U heeft geen dagen ingevoerd!");

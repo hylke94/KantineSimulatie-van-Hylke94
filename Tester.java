@@ -24,4 +24,14 @@ public class Tester {
     	
     	ks = new KantineSimulatie();
 	}
+	
+	public void run(){
+	    Model model = new Model();
+    	View view = new View(model);
+    	Controller controller = new Controller(model,view);
+    	
+    	view.setVisible(true);
+    	
+    	ks = new KantineSimulatie();
+	}
 }

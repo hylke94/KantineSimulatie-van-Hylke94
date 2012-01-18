@@ -2,4 +2,6 @@
 comment0.params=args
 comment0.target=void\ main(java.lang.String[])
 comment0.text=\r\n\ Een\ tester\ om\ de\ kantinesimulatie\ voor\ een\ X\ aantal\ dagen\ te\ laten\ draaien.\r\n\ \r\n\ @param\ Sting[]\ args,\ eerste\ argument\ bevat\ het\ aantal\ dagen\ voor\ de\ simulatie\r\n
-numComments=1
+comment1.params=
+comment1.target=void\ run()
+numComments=2

@@ -30,7 +30,10 @@ public class KantineSimulatie
     public static double[] artikelprijzen=
         new double[] {1.50,2.10,1.65,1.65};
     
-    //minimum en maximum aantal artikelen per soort
+    //hoeveelheden
+	int[] hoeveelheden = new int[] {20000,20000,20000,20000};
+    
+	//minimum en maximum aantal artikelen per soort
     private static final int MIN_ARTIKELEN_PER_SOORT=10000;
     private static final int MAX_ARTIKELEN_PER_SOORT=20000;
     
@@ -41,13 +44,12 @@ public class KantineSimulatie
     
     //-- Constructor
     
-    public KantineSimulatie(int dagen){
-        this.kantine=new Kantine();
+    public KantineSimulatie(){
+    	this.kantine=new Kantine();
         this.random=new Random();
-        int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
-        kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
         
-        simuleer(dagen);
+        //int[] hoeveelheden=getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
+        kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
     }
     
     //-- Getters
@@ -179,14 +181,12 @@ public class KantineSimulatie
         System.out.println("Gemiddelde omzet per dag: "+gemOmzet);
         System.out.println();
         
+        String[] weekDagen = new String[]
+        		{"zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"};
         double[] gemDagOmzet=Administratie.berekenDagOmzet(this.dagomzet);
-        System.out.println("Totale omzet van alle zondagen = "+gemDagOmzet[0]);
-        System.out.println("Totale omzet van alle maandagen = "+gemDagOmzet[1]);
-        System.out.println("Totale omzet van alle dinsdagen = "+gemDagOmzet[2]);
-        System.out.println("Totale omzet van alle woensdagen = "+gemDagOmzet[3]);
-        System.out.println("Totale omzet van alle donderdagen = "+gemDagOmzet[4]);
-        System.out.println("Totale omzet van alle vrijdagen = "+gemDagOmzet[5]);
-        System.out.println("Totale omzet van alle zaterdagen = "+gemDagOmzet[6]);
+        for (int i=0;i<weekDagen.length;i++){
+        	System.out.println("Totale omzet van alle "+weekDagen[i]+"en = "+gemDagOmzet[i]);
+    	}
         System.out.println();
     }
 }

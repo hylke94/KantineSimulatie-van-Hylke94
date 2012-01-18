@@ -130,7 +130,12 @@ public class Kassa
         	hoeveelheidGeld += totaalPrijs;
         }
         catch(Exception e){
+        	System.out.println("##########ERROR##########");
+        	System.out.println();
+        	System.out.println(pers);
         	System.out.println(e);
+        	System.out.println();
+        	System.out.println("-------------------------");
         	System.out.println();
         }
     }

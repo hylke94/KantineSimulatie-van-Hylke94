@@ -33,4 +33,9 @@ public class TeWeinigGeldException extends Exception
     public TeWeinigGeldException(String message){
     	super(message);
     }
+    
+    @Override
+	public String toString(){
+    	return "Onvoldoende saldo op pinpas";
+    }
 }

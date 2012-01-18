@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=kredlem
+comment0.params=kredietlimiet1
 comment0.target=void\ setKredietlemiet(double)
 comment0.text=\r\n\ Methode\ om\ kredietlemiet\ te\ zetten\r\n\ \r\n\ @param\ kredietlemiet\r\n
 comment1.params=teBetalen
-comment1.target=boolean\ betaal(double)
-comment1.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n\ \r\n\ @throws\ TeWeinigGeldException\ als\ er\ niet\ genoeg\ krediet\ is\r\n
+comment1.target=void\ betaal(double)
+comment1.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n\ @throws\ TeWeinigGeldException\ \r\n
 numComments=2

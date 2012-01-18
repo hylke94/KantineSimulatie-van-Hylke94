@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=model1
+comment0.target=View(Model)
+comment1.params=
+comment1.target=Model\ getModel()
+comment2.params=
+comment2.target=void\ updateView()
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=4

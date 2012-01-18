@@ -33,10 +33,17 @@ public class KantineAanbod {
             	//voeg één artikel aan de ArrayList toe
                 artikelen.add(new Artikel(artikelnaam[i], prijs[i]));
             }
-            //voeg deze ArrayList samen met de naam an de HashMap toe
+            //voeg deze ArrayList samen met de naam aan de HashMap toe
             //voorbeeld: "Appel", 'geheugenadres', prijs.
             this.aanbod.put(artikelnaam[i], artikelen);
         }
+    }
+    
+    /**
+     * Een lege constructor
+     */
+    public KantineAanbod(){
+    	
     }
     
     /**
@@ -44,7 +51,7 @@ public class KantineAanbod {
      * naam van het artikel. Retourneert null als artikel niet bestaat.
      */
     public ArrayList<Artikel> getArrayList(String productnaam) {
-         return this.aanbod.get(productnaam); 
+         return this.aanbod.get(productnaam);
     }
 
     /**
@@ -76,5 +83,30 @@ public class KantineAanbod {
      */
     public Artikel getArtikel(String naam) {
         return getArtikel(getArrayList(naam));
+    }
+    
+    /**
+     * Methode om een artikel aan het aanbod toe te voegen
+     * 
+     * @param artikelnaam
+     * @param prijs
+     * @param hoeveelheid
+     */
+    public void voegArtikelToe(String[] artikelnaam, double[] prijs, int[] hoeveelheid){
+    	//ga elk artikel(naam) bij langs
+        for(int i=0;i<artikelnaam.length;i++) 
+        {
+        	//maak eerst een ArrayList voor alle artikelen van dezelfde soort
+            ArrayList<Artikel> artikelen=new ArrayList<Artikel>();
+            //ga elk artikel(hoeveelheid) bij langs
+            for(int j=0;j<hoeveelheid[i];j++) 
+            {
+            	//voeg één artikel aan de ArrayList toe
+                artikelen.add(new Artikel(artikelnaam[i], prijs[i]));
+            }
+            //voeg deze ArrayList samen met de naam aan de HashMap toe
+            //voorbeeld: "Appel", 'geheugenadres', prijs.
+            this.aanbod.put(artikelnaam[i], artikelen);
+        }
     }
 }

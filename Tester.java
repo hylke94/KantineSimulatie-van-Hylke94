@@ -13,7 +13,7 @@ public class Tester {
 	/**
 	 * Een tester om de kantinesimulatie voor een X aantal dagen te laten draaien.
 	 * 
-	 * @param Sting[] args, eerste argument bevat het aantal dagen voor de simulatie
+	 * @param Sting[] args
 	 */
 	public static void main (String[] args){
 		Model model = new Model();
@@ -25,7 +25,7 @@ public class Tester {
     	ks = new KantineSimulatie();
 	}
 	
-	public void run(){
+	public static void run(){
 	    Model model = new Model();
     	View view = new View(model);
     	Controller controller = new Controller(model,view);
